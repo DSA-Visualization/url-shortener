@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const QRCode = require('qrcode');
 require('dotenv').config();
 const port = process.env.PORT || 3000;
 const fs = require('fs');
@@ -46,6 +47,32 @@ if (getUrl !== null) {
   res.json({ shortUrl });
 }
 
+});
+
+app.post('/generateQrCode',(req, res) => {
+  const requestedData = req.body;
+   // Data you want to encode in the QR code
+    const dataToEncode = requestedData.data;
+
+    // Options for the QR code (size, error correction, etc.)
+    const options = {
+      errorCorrectionLevel: 'M',
+      type: 'image/png',
+      quality: 0.92,
+      margin: requestedData.margin,
+      width: requestedData.width,
+      height: requestedData.width,
+      color:{
+        dark: requestedData.qrColor,
+        light: requestedData.backgroundColor
+      }
+    };
+
+    // Generate the QR code
+    QRCode.toDataURL( dataToEncode, options, (err, url) => {
+      if (err) throw err;
+      res.json({qrCode : url});
+    });
 });
 
 app.get('/:shortUrl', (req, res) => {
