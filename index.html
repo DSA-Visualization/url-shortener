@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener | Rajesh Rathore</title>
+    <link rel="icon" type="image/png" href="/images/dsa-logo.png">
+    <link rel="shortcut icon" href="/images/dsa-logo.png">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <script defer src="/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+    <script defer src="/js/controller.js"  crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="upper-section">
+        <section class="container pt-4">
+            <h1 class="text-center">Short URL</h1>
+            <div class="card px-md-4  px-3 py-4 mt-5">
+                <div class="input-group">
+                    <input type="text" id="linkInput" class="form-control" placeholder="Enter Link Here" aria-label="" aria-describedby="button-addon2">
+                    <button class="btn btn-primary-base" type="button" id="button-addon2" onclick="formSubmit()"><p class="m-0">Short Url</p></button>
+                </div>
+                <p class="m-0 mt-4">ShortURL is a convenient tool that allows you to shorten long URLs into shorter, more manageable links. It's a popular service that simplifies link sharing, making it easier to share content, especially on platforms with character limits or for cleaner and more visually appealing links.</p>
+              
+            </div>
+
+            <div class="card mt-4 d-none px-md-4 px-3 py-4" id="resultCard">
+                <div class="row">
+                    <div class="col-12 mb-3  text-truncate fw-bold">
+                        Long Url :-
+                        <span id="longUrlElement"></span>
+                    </div>
+                    <div class="col-9 mb-3 text-truncate">
+                       <a href="" target="new" class="fw-bold" id="shortUrlElement"></a>
+                    </div>
+                    <div class="col-3 mb-md-0 mb-3 text-truncate">
+                        <img class="tab" src="/images/copy-icon.png" width="32" height="32" alt="">
+                     </div>
+                    <div class="col-md-3 col-12 tab fw-bold">Generate QR Code</div>
+                   </div>
+            </div>
+        </section>
+    </section>
+  
+</body>
+</html>
