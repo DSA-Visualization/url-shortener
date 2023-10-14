@@ -1,3 +1,11 @@
+const qrCodeOption = {
+    data:'Hello world!',
+    backgroundColor:'#ffffffff',
+    qrColor:'#000000ff',
+    margin:1,
+    width:200
+}
+
 const formSubmit = () => {
     const inputElement = document.getElementById('linkInput');
     if (inputElement.value) {
@@ -34,6 +42,8 @@ const contentUpdate = (inputElement, shortUrl) => {
     // Set the new href value
     linkElement.setAttribute("href", `http://localhost:5000/${shortUrl}`);
 
+    qrCodeOption.data = `http://localhost:5000/${shortUrl}`;
+
     // Optional: Update the link text
     linkElement.textContent = `http://localhost:5000/${shortUrl}`;
     inputElement.value = null;
@@ -66,4 +76,64 @@ const copyLink = () => {
     setTimeout(() => {
         linkCopyElement.className = 'tab';
     }, 2000);
+}
+
+const setQrBackGroundColorValue = () => {
+  const qrBgColorElement = document.getElementById('qrBackGroundColor');
+  const qrBgShowElement = document.getElementById('showQrBgColor');
+  const bgColorValue = qrBgColorElement.value;
+  qrBgShowElement.style.background = bgColorValue;
+  qrCodeOption.backgroundColor = bgColorValue;
+  generateQrCode();
+};
+const setQrColorValue = () => {
+    const qrColorElement = document.getElementById('qrColor');
+    const qrColorShowElement = document.getElementById('showQrColor');
+    const qrColorValue = qrColorElement.value;
+    qrColorShowElement.style.background = qrColorValue;
+    qrCodeOption.qrColor = qrColorValue; 
+    generateQrCode();
+};
+
+const setQrMargin = (value) =>{
+    qrCodeOption.margin = value;
+    generateQrCode();
+}
+
+const createQRCode = () => {
+    generateQrCode();
+    const qrCodeELement = document.getElementById('resultQrCard');
+    qrCodeELement.className = 'card mt-4 px-md-4 px-3 py-4'
+}
+
+const generateQrCode = () => {
+    fetch('http://localhost:5000/generateQrCode', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(qrCodeOption),
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Internal server error');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Handle the JSON response data here
+            setQrCodeView(data);
+        })
+        .catch(error => {
+            // Handle any errors here
+            console.error('There was a problem with the fetch operation:', error);
+        });
+}
+
+const setQrCodeView = (data) => {
+    const qrCodePreviewElement = document.getElementById('qrCodePreview');
+    const qrCodeDownloadElement = document.getElementById('qrCodeDownloadLink');
+    qrCodeDownloadElement.setAttribute('download', `${new Date()}.png`);
+    qrCodePreviewElement.src = data.qrCode;
+    qrCodeDownloadElement.href = data.qrCode;
 }

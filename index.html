@@ -34,7 +34,7 @@
               
             </div>
 
-            <div class="card mt-4 d-none px-md-4 px-3 py-4" id="resultCard">
+            <div class="card mt-4 d-none  px-md-4 px-3 py-4" id="resultCard">
                 <div class="row">
                     <div class="col-12 mb-3  text-truncate fw-bold">
                         Long Url :-
@@ -46,9 +46,45 @@
                     <div class="col-3 mb-md-0 mb-3 text-truncate">
                         <img class="tab" id="copyLink" onclick="copyLink()" src="/images/copy-icon.png" width="32" height="32" alt="">
                      </div>
-                    <div class="col-md-3 col-12 tab fw-bold">Generate QR Code</div>
+                    <div class="col-md-3 col-12 tab fw-bold" onclick="createQRCode()">Generate QR Code</div>
                    </div>
             </div>
+            <div class="card mt-4 d-none px-md-4 px-3 py-4" id="resultQrCard">
+              <div class="row">
+                <div class="col-md-6 col-12">
+                  <div class="mb-3">
+                    <label class="form-label">Background Color</label>
+                    <div class="d-flex">
+                      <div class="col-10">
+                        <input type="text" class="form-control" id="qrBackGroundColor" value="#ffffffff" placeholder="#ffffffff" onkeyup="setQrBackGroundColorValue()" >
+                      </div>
+                      <div class="ms-2 col-2 qr-bg-color-box" id="showQrBgColor"></div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label  class="form-label">Qr Color</label>
+                    <div class="d-flex">
+                      <div class="col-10">
+                        <input type="text" class="form-control" id="qrColor" value="#000000ff" placeholder="#000000ff" onkeyup="setQrColorValue()">
+                      </div>
+                      <div class="ms-2 col-2 qr-color-box" id="showQrColor"></div>
+                    </div>
+                  </div>
+                  <label for="qrMargin" class="form-label">Margin</label>
+                  <input type="range" value="1" class="form-range" min="1" max="50" step="1" id="qrMargin"  onchange="setQrMargin(this.value)">
+                </div>
+                <div class="col-md-6 col-12 mt-md-0 mt-4">
+                <div class="d-flex justify-content-center align-items-center h-100 w-100">
+                   <div>
+                    <img src="" alt="generated qr code" id="qrCodePreview">
+                    <div class="d-flex align-items-center w-100">
+                      <a id="qrCodeDownloadLink" href="http://" class="fw-bold">Download Qr</a>
+                    </div>
+                   </div>
+                </div>
+                </div>
+              </div>
+          </div>
         </section>
     </section>
     <section class="margin-top social-media">
