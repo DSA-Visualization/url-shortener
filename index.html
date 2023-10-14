@@ -10,6 +10,8 @@
     <link href="/css/style.css" rel="stylesheet">
     <script defer src="/js/bootstrap.min.js"  crossorigin="anonymous"></script>
     <script defer src="/js/controller.js"  crossorigin="anonymous"></script>
+    <!-- github button -->
+  <script  defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 <body>
     <section class="upper-section">
@@ -34,13 +36,33 @@
                        <a href="" target="new" class="fw-bold" id="shortUrlElement"></a>
                     </div>
                     <div class="col-3 mb-md-0 mb-3 text-truncate">
-                        <img class="tab" src="/images/copy-icon.png" width="32" height="32" alt="">
+                        <img class="tab" id="copyLink" onclick="copyLink()" src="/images/copy-icon.png" width="32" height="32" alt="">
                      </div>
                     <div class="col-md-3 col-12 tab fw-bold">Generate QR Code</div>
                    </div>
             </div>
         </section>
     </section>
-  
+    <footer></footer>
+
+    <div class="floating-container">
+        <div class="floating-button">
+          <img src="/images/github.png" height="30" width="30" alt="GitHub">
+        </div>
+        <div class="element-container">
+          <div class="float-element">
+            <a class="github-button" href="https://github.com/raj-rathod" data-size="large" aria-label="Follow @raj-rathod on GitHub">Follow @raj-rathod</a>
+          </div>
+          <div class="float-element">
+            <a class="github-button" href="https://github.com/sponsors/raj-rathod" data-icon="octicon-heart" data-size="large" aria-label="Sponsor @raj-rathod on GitHub">Sponsor</a>
+          </div>
+          <div class="float-element">
+            <a class="github-button" href="https://github.com/DSA-Visualization/url-shortener" data-icon="octicon-star" data-size="large" aria-label="Star raj-rathod/DSA-visualisation-in-angular on GitHub">Star</a>
+          </div>
+          <div class="float-element">
+            <a class="github-button" href="https://github.com/DSA-Visualization" data-icon="octicon-comment-discussion" data-size="large" aria-label="Discuss raj-rathod/DSA-visualisation-in-angular on GitHub">Discuss</a>
+          </div>
+        </div>
+      </div>
 </body>
 </html>

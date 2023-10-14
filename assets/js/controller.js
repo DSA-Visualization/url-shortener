@@ -41,3 +41,29 @@ const contentUpdate = (inputElement, shortUrl) => {
     resultCardElement.className = 'card mt-4 px-md-4 px-3 py-4'
 
 }
+
+const copyLink = () => {
+    const linkCopyElement = document.getElementById('copyLink');
+    const linkElement = document.getElementById("shortUrlElement");
+    const linkToCopy = linkElement.href; // Replace with the link you want to copy
+
+    // Create a temporary input element
+    const inputElement = document.createElement('input');
+    inputElement.value = linkToCopy;
+
+    // Append the input element to the DOM
+    document.body.appendChild(inputElement);
+
+    // Select the input element's value
+    inputElement.select();
+
+    // Copy the selected text to the clipboard
+    document.execCommand('copy');
+
+    // Remove the input element from the DOM
+    document.body.removeChild(inputElement);
+    linkCopyElement.className = 'tab d-none';
+    setTimeout(() => {
+        linkCopyElement.className = 'tab';
+    }, 2000);
+}
