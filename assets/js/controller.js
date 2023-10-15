@@ -1,3 +1,5 @@
+const hostUrl = 'http://localhost:5000/';
+
 const qrCodeOption = {
     data:'Hello world!',
     backgroundColor:'#ffffffff',
@@ -9,7 +11,7 @@ const qrCodeOption = {
 const formSubmit = () => {
     const inputElement = document.getElementById('linkInput');
     if (inputElement.value) {
-        fetch('http://localhost:5000/shortUrl', {
+        fetch(`${hostUrl}shortUrl`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,12 +42,12 @@ const contentUpdate = (inputElement, shortUrl) => {
     const linkElement = document.getElementById('shortUrlElement');
 
     // Set the new href value
-    linkElement.setAttribute("href", `http://localhost:5000/${shortUrl}`);
+    linkElement.setAttribute("href", `${hostUrl}${shortUrl}`);
 
-    qrCodeOption.data = `http://localhost:5000/${shortUrl}`;
+    qrCodeOption.data = `${hostUrl}${shortUrl}`;
 
     // Optional: Update the link text
-    linkElement.textContent = `http://localhost:5000/${shortUrl}`;
+    linkElement.textContent = `${hostUrl}${shortUrl}`;
     inputElement.value = null;
     const resultCardElement = document.getElementById('resultCard');
     resultCardElement.className = 'card mt-4 px-md-4 px-3 py-4'
@@ -107,7 +109,7 @@ const createQRCode = () => {
 }
 
 const generateQrCode = () => {
-    fetch('http://localhost:5000/generateQrCode', {
+    fetch(`${hostUrl}generateQrCode`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
