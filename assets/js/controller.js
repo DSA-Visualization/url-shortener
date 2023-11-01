@@ -1,4 +1,4 @@
-const hostUrl = 'http://localhost:5000/';
+const hostUrl = window.location.origin+'/';
 
 const qrCodeOption = {
     data:'Hello world!',
