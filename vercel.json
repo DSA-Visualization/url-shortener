@@ -1,7 +1,7 @@
 {
     "version": 2,
     "routes": [
-        { "handle": "hit", "src": "/shortUrl", "methods": ["POST"] },
-        { "handle": "hit", "src": "/generateQrCode", "methods": ["POST"] }
+        { "src": "/shortUrl", "methods": ["POST"] },
+        { "src": "/generateQrCode", "methods": ["POST"] }
     ]
   }
