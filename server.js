@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors')
 const QRCode = require('qrcode');
 require('dotenv').config();
 const port = process.env.PORT || 3000;
@@ -9,7 +10,7 @@ const base64url = require('base64-url');
 const shortid = require('shortid');
 
 app.use(express.json());
-
+app.use(cors());
 // Create a JSON file to store URL mappings
 const urlDatabaseFile = 'urls.json';
 
